@@ -12,17 +12,20 @@ class UnitConverter extends JFrame{
 
     private String yourInput;
     private boolean again = true;
-    private double value;
+    private double valuelbs;
 
         // JOptionPane.showMessageDialog(null, "Unit Converter/n/nRules: /n1)Only use positive numbers/n2)No Symbols");
         // yourInput = JOptionPane.showInputDialog(null, "Enter Your Number");
 
-        
     public UnitConverter(){
-    setLayout(new UnitConverter (2, 2, 5, 5));
+        JTextField lbs = new JTectField(8);
+        setLayout(new GridLayout(2, 2, 5, 5));
         add(new JLabel("Pounds"));
-        add(new JTextField());
-
+        add(lbs);
+        while(again){
+            valuelbs=lbs.getText();
+        }    
+    }
     public static void main(String[] args){
         UnitConverter pounds = new UnitConverter();
         UnitConverter kilograms = new UnitConverter();
