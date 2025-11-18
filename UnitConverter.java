@@ -24,9 +24,14 @@ class UnitConverter extends JFrame{
         add(new JLabel("Pounds"));
         add(lbs);
         add(stop);
-        while(again){
-            valuelbs=lbs.getText();
-        }    
+
+        try {
+            while(again) {
+                valuelbs = Double.parseDouble(lbs.getText());
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Invalid string format for double conversion.");
+        }
 
     }
 
