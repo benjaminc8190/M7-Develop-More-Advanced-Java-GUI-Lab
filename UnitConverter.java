@@ -2,7 +2,7 @@
 // * CSCI 185 M02
 // * Fall 2025
 // * M7: Develop More Advanced Java GUI Lab
-// * Author: Benjamin Chau
+// * Author: Benjamin Chau, Anthony Coates, Jeffrey Perez
 // * Date: 11/18/2025
 // */
 
