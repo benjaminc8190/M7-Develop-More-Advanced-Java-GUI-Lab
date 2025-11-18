@@ -12,33 +12,36 @@ import java.awt.*;
 class UnitConverter extends JFrame{
 
     private String yourInput;
-    private boolean again = true;
     private double valuelbs;
 
     public UnitConverter(){
-        JTextField lbs = new JTextField(8);
-        JButton stop = new JButton("Submit");
-        setLayout(new GridLayout(2, 2, 5, 5));
-        add(new JLabel("Unit Converter/n/nRules: /n1)Only use positive numbers/n2)No Symbols"));
-        add(new JLabel(""));
-        add(new JLabel("Pounds"));
-        add(lbs);
-        add(stop);
+        setLayout(new GridLayout(3, 2, 5, 5));
+        add(new JLabel("Rules: Only positive numbers and no symbols"));
+        add(new JLabel("")); // empty cell
 
+        yourInput=JOptionPane.showInputDialog("Enter pounds:");
         try {
-            while(again) {
-                valuelbs = Double.parseDouble(lbs.getText());
+            valuelbs=Double.parseDouble(yourInput);
+            if (valuelbs < 0) {
+                throw new IllegalArgumentException("Negative values not allowed");
             }
-        } catch (NumberFormatException e) {
+        } catch(NumberFormatException e){
             System.out.println("Error: Invalid string format for double conversion.");
+        } catch(IllegalArgumentException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
 
+        add(new JLabel("Pounds:"));
+        add(new JLabel(valuelbs+" lbs"));
+
+        add(new JLabel("Kilograms"));
+        add(new JLabel("kg"));
     }
 
     public static void main(String[] args){
         UnitConverter frame = new UnitConverter();
         frame.setTitle("Unit Converter");
-        frame.setSize(500,500);
+        frame.setSize(1000,500);
         frame.setVisible(true);
     }
 }
