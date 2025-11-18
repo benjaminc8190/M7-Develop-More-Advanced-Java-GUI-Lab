@@ -12,11 +12,11 @@ import java.awt.*;
 class UnitConverter extends JFrame{
 
     private String yourInput;
-    private double valuelbs;
+    private double valuelbs, valuekg;
 
     public UnitConverter(){
         setLayout(new GridLayout(3, 2, 5, 5));
-        add(new JLabel("Rules: Only positive numbers and no symbols"));
+        add(new JLabel("Rules: Only positive numbers, no symbols or letters"));
         add(new JLabel("")); // empty cell
 
         yourInput=JOptionPane.showInputDialog("Enter pounds:");
@@ -26,16 +26,17 @@ class UnitConverter extends JFrame{
                 throw new IllegalArgumentException("Negative values not allowed");
             }
         } catch(NumberFormatException e){
-            System.out.println("Error: Invalid string format for double conversion.");
+            JOptionPane.showMessageDialog(null, "Cannot use symbols or letters");
         } catch(IllegalArgumentException e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+        valuekg=0.453592*valuelbs;
 
         add(new JLabel("Pounds:"));
         add(new JLabel(valuelbs+" lbs"));
 
         add(new JLabel("Kilograms"));
-        add(new JLabel("kg"));
+        add(new JLabel(valuekg+" kg"));
     }
 
     public static void main(String[] args){
