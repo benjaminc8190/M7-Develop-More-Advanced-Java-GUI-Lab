@@ -16,11 +16,14 @@ class UnitConverter extends JFrame{
     private double valuelbs;
 
     public UnitConverter(){
-        JTextField lbs = new JTectField(8);
-        setLayout(new GridLayout(3, 2, 5, 5));
+        JTextField lbs = new JTextField(8);
+        JButton stop = new JButton("Submit");
+        setLayout(new GridLayout(2, 2, 5, 5));
         add(new JLabel("Unit Converter/n/nRules: /n1)Only use positive numbers/n2)No Symbols"));
+        add(new JLabel(""));
         add(new JLabel("Pounds"));
         add(lbs);
+        add(stop);
         while(again){
             valuelbs=lbs.getText();
         }    
@@ -28,11 +31,9 @@ class UnitConverter extends JFrame{
     }
 
     public static void main(String[] args){
-        UnitConverter pounds = new UnitConverter();
-        UnitConverter kilograms = new UnitConverter();
-
+        UnitConverter frame = new UnitConverter();
         frame.setTitle("Unit Converter");
-        frame.setSize(,);
-        
+        frame.setSize(500,500);
+        frame.setVisible(true);
     }
 }
