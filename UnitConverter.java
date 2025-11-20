@@ -6,8 +6,9 @@
 // * Date: 11/18/2025
 // */
 
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
 
 class UnitConverter extends JFrame{
 
@@ -15,28 +16,31 @@ class UnitConverter extends JFrame{
     private double valuelbs, valuekg;
 
     public UnitConverter(){
+        //Set up
         setLayout(new GridLayout(3, 2, 5, 5));
+        JTextField yourInput = new JTextField(5);
+        JTextField result = new JTextField(5);
+
+        //front-end
         add(new JLabel("Rules: Only positive numbers, no symbols or letters"));
         add(new JLabel("")); // empty cell
+        add(new JLabel("Pounds to be converted:"));
+        add(yourInput);
+        add(new JLabel("Kilograms after conversion:"));
+        add(result);
 
-        yourInput=JOptionPane.showInputDialog("Enter pounds:");
-        try {
-            valuelbs=Double.parseDouble(yourInput);
-            if (valuelbs < 0) {
-                throw new IllegalArgumentException("Negative values not allowed");
-            }
-        } catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Cannot use symbols or letters");
-        } catch(IllegalArgumentException e){
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-        valuekg=0.453592*valuelbs;
+        // try {
+        //     valuelbs=Double.parseDouble(yourInput.getText());
+        //     if (valuelbs < 0) {
+        //         throw new IllegalArgumentException("Negative values not allowed");
+        //     }
+        // } catch(NumberFormatException e){
+        //     JOptionPane.showMessageDialog(null, "Cannot use symbols or letters");
+        // } catch(IllegalArgumentException e){
+        //     JOptionPane.showMessageDialog(null, e.getMessage());
+        // }
+        // valuekg=0.453592*valuelbs;
 
-        add(new JLabel("Pounds:"));
-        add(new JLabel(valuelbs+" lbs"));
-
-        add(new JLabel("Kilograms"));
-        add(new JLabel(valuekg+" kg"));
     }
 
     public static void main(String[] args){
