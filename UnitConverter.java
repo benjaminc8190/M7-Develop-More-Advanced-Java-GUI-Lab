@@ -20,6 +20,8 @@ class UnitConverter extends JFrame{
         setLayout(new GridLayout(3, 2, 5, 5));
         JTextField yourInput = new JTextField(5);
         JTextField result = new JTextField(5);
+        JButton convert = new JButton("Convert");
+        JButton clear = new JButton("Clear");
 
         //front-end
         add(new JLabel("Rules: Only positive numbers, no symbols or letters"));
@@ -28,18 +30,34 @@ class UnitConverter extends JFrame{
         add(yourInput);
         add(new JLabel("Kilograms after conversion:"));
         add(result);
+        add(convert);
+        add(clear);
 
-        // try {
-        //     valuelbs=Double.parseDouble(yourInput.getText());
-        //     if (valuelbs < 0) {
-        //         throw new IllegalArgumentException("Negative values not allowed");
-        //     }
-        // } catch(NumberFormatException e){
-        //     JOptionPane.showMessageDialog(null, "Cannot use symbols or letters");
-        // } catch(IllegalArgumentException e){
-        //     JOptionPane.showMessageDialog(null, e.getMessage());
-        // }
-        // valuekg=0.453592*valuelbs;
+        //Converter button
+        convert.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                try {
+                    valuelbs = Double.parseDouble(yourInput.getText());
+                    if (valuelbs < 0) {
+                        throw new IllegalArgumentException("Negative values not allowed");
+                    }
+                    valuekg = 0.453592 * valuelbs;
+                    result.setText(valuekg+" kg");
+                } catch (NumberFormatException err) {
+                    JOptionPane.showMessageDialog(null, "Cannot use symbols or letters");
+                } catch (IllegalArgumentException err) {
+                    JOptionPane.showMessageDialog(null, err.getMessage());
+                }
+            }
+        } );
+
+        //Clear button
+        clear.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                yourInput.setText("");
+                result.setText("");
+            }
+        } );
 
     }
 
