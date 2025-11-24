@@ -17,7 +17,7 @@ class UnitConverter extends JFrame{
 
     public UnitConverter(){
         //Set up
-        setLayout(new GridLayout(3, 2, 5, 5));
+        setLayout(new GridLayout(4, 2, 5, 5));
         JTextField yourInput = new JTextField(5);
         JTextField result = new JTextField(5);
         JButton convert = new JButton("Convert");
@@ -25,7 +25,7 @@ class UnitConverter extends JFrame{
 
         //front-end
         add(new JLabel("Rules: Only positive numbers, no symbols or letters"));
-        add(new JLabel("")); // empty cell
+        add(new JLabel("We can only convert from Pounds to Kilograms!"));
         add(new JLabel("Pounds to be converted:"));
         add(yourInput);
         add(new JLabel("Kilograms after conversion:"));
